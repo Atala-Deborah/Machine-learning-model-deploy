@@ -78,7 +78,7 @@ class SkinDiagnosisModel(nn.Module):
 # Configuration
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-MODEL_PATH = 'models/skin_diagnosis_model (1).pth'  
+MODEL_PATH = 'models/skin_diagnosis_model.pth'  
 CLASS_NAMES = ['Light Diseases and Disorders of Pigmentation', 'Lupus and other Connective Tissue diseases', 'Bullous Disease', 'Systemic Disease', 'Eczema', 'Vascular Tumors', 'Urticaria Hives', 'Contact Dermatitis', 'Herpes HPV and other STDs', 'Atopic Dermatitis', 'Hair Loss Photos Alopecia and other Hair Diseases', 'Tinea Ringworm Candidiasis and other Fungal Infections', 'Acne or Rosacea', 'Psoriasis pictures Lichen Planus and related diseases', 'Melanoma Skin Cancer Nevi and Moles', 'Vasculitis', 'Nail Fungus and other Nail Disease', 'Scabies Lyme Disease and other Infestations and Bites', 'Exanthems and Drug Eruptions', 'Seborrheic Keratoses and other Benign Tumors', 'Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions', 'Cellulitis Impetigo and other Bacterial Infections', 'Warts Molluscum and other Viral Infections'] #  actual classes
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
