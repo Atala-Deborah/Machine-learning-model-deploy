@@ -91,8 +91,7 @@ model = SkinDiagnosisModel(num_classes=23).to(DEVICE)
 model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE ))
 model.eval()
 print("PyTorch model loaded successfully")
-device = torch.device('cpu')  
-model.to(device)
+
 
 # Define image transformations
 
