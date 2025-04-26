@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Disease Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Skin Disease Classifier</h1>
+        <p>Upload an image of a skin condition to get a diagnosis prediction</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Analyze</button>
+        </form>
+        
+        {% if prediction %}
+        <div class="result">
+            <h2>Results</h2>
+            <div class="image-preview">
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+            </div>
+            <div class="prediction">
+                <p><strong>Prediction:</strong> {{ prediction }}</p>
+                
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
