@@ -80,7 +80,7 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 MODEL_PATH = 'models/skin_diagnosis_model.pth'  
 CLASS_NAMES = ['Light Diseases and Disorders of Pigmentation', 'Lupus and other Connective Tissue diseases', 'Bullous Disease', 'Systemic Disease', 'Eczema', 'Vascular Tumors', 'Urticaria Hives', 'Contact Dermatitis', 'Herpes HPV and other STDs', 'Atopic Dermatitis', 'Hair Loss Photos Alopecia and other Hair Diseases', 'Tinea Ringworm Candidiasis and other Fungal Infections', 'Acne or Rosacea', 'Psoriasis pictures Lichen Planus and related diseases', 'Melanoma Skin Cancer Nevi and Moles', 'Vasculitis', 'Nail Fungus and other Nail Disease', 'Scabies Lyme Disease and other Infestations and Bites', 'Exanthems and Drug Eruptions', 'Seborrheic Keratoses and other Benign Tumors', 'Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions', 'Cellulitis Impetigo and other Bacterial Infections', 'Warts Molluscum and other Viral Infections'] #  actual classes
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+DEVICE = torch.device('cpu')  # ← Change from 'cuda' to 'cpu'
 
 # Ensure upload folder exists
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -88,9 +88,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Load PyTorch model
 model = SkinDiagnosisModel(num_classes=23).to(DEVICE)
-model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE ))
 model.eval()
 print("PyTorch model loaded successfully")
+device = torch.DEVICE('cpu')  
+model.to(DEVICE)
 
 # Define image transformations
 
