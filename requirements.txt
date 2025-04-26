@@ -1,7 +1,8 @@
-Flask==2.0.1
+
 Werkzeug==2.0.1
-torch==2.3.1  # Updated to current stable version
-torchvision==0.18.1  # Updated to match PyTorch version
 Pillow==10.3.0  # Updated version
 numpy==1.26.4  # Updated version
-gunicorn==21.2.0  # Updated version
+torch>=2.0.0
+torchvision
+flask
+gunicorn

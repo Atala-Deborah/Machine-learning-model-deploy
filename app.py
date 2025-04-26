@@ -7,6 +7,7 @@ import torch
 import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.nn.functional as F
+from model_definitions import SkinDiagnosisModel 
 
 
 app = Flask(__name__)
@@ -86,8 +87,9 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Load PyTorch model
-model = torch.load(MODEL_PATH, map_location=DEVICE)
-model.eval()  # Set to evaluation mode
+model = SkinDiagnosisModel(num_classes=23).to(DEVICE)
+model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE))
+model.eval()
 print("PyTorch model loaded successfully")
 
 # Define image transformations
